@@ -1,0 +1,52 @@
+function izracunaj() {
+	var ime1 = document.getElementById("osoba1ime").value;
+	var ime2 = document.getElementById("osoba2ime").value;
+	var datum1 = document.getElementById("osoba1datum").value;
+	var datum2 = document.getElementById("osoba2datum").value;
+	var zbir1 = 0;
+	var zbir2 = 0;
+	var zbir = 0;
+	
+	if(ime1 == "" || ime2 == "") 
+	{
+		alert('Popunite sva polja');
+	}
+	else if(!Date.parse(datum1) || !Date.parse(datum2)) 
+	{
+		alert('Unesite oba datuma');
+	}
+	else
+	{
+		/*var dat1 = [datum1[0], datum1[1], datum1[2], datum1[3], datum1[5], datum1[6], datum1[8], datum1[9]];
+		var dat2 = [datum2[0], datum2[1], datum2[2], datum2[3], datum2[5], datum2[6], datum2[8], datum2[9]];
+		for (var i=0; i<8; i++)
+		{
+			zbir1 += parseFloat(dat1[i]);
+			zbir2 += parseFloat(dat2[i]);
+		}*/
+		
+		do {
+			zbir1 = 0;
+			for (var i=0; i<datum1.length; i++) 
+			{
+				if (datum1[i] != '-') zbir1 += parseFloat(datum1[i]);
+			}
+			datum1 = zbir1.toString();
+		}while(zbir1 > 9)
+		
+		do {
+			zbir2 = 0;
+			for (var i=0; i<datum2.length; i++)
+			{
+				if (datum2[i] != '-') zbir2 += parseFloat(datum2[i]);
+			}
+			datum2 = zbir2.toString();
+		}while(zbir2 > 9)
+		
+		if (zbir1 <= zbir2) zbir = zbir1/zbir2*100;
+		else zbir = zbir2/zbir1*100;
+		document.getElementById("ime1osobe").innerHTML = ime1;
+		document.getElementById("ime2osobe").innerHTML = ime2;
+		document.getElementById("procSlaganja").innerHTML = Math.round(zbir).toString() + "%";
+	}
+}

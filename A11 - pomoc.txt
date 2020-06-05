@@ -1,0 +1,5 @@
+index -> pocetna
+
+page -> uputstvo
+
+examples -> oautoru
